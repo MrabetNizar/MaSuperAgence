@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+        <div class="container text-center">
+            <h1>Les meilleurs Biens</h1>
+        </div>
+
+        <div class="container mt-4">
+            <div class="row">
+                {% for propertie in properties %}
+                    <div class="col-md-4">
+                        <div class="jumbotron ">
+                            <h4><a href="{{ path('property.detail',{id:propertie.id, slug:propertie.slug}) }}"> {{ propertie.title }}</a></h4>
+                            <p>{{ propertie.description }}</p>
+                            <price>Prix: {{ propertie.FormattedPrice }} TND</price><br>
+                            <adresse>Adresse: {{ propertie.adresse }}</adresse>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+{% endblock %}
